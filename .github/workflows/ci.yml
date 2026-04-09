@@ -19,7 +19,7 @@ jobs:
       run: |
         export VAULT_ADDR=${{ secrets.VAULT_ADDR }}
         export VAULT_TOKEN=${{ secrets.VAULT_TOKEN }}
-        vault kv get -field=DOCKERPASSWORD secret/app > secret.txt
+        vault kv get -field=DOCKERPASSWORD secret/myapp > secret.txt
 
     - name: Building the Image
       run: docker build -t myapp:latest .
