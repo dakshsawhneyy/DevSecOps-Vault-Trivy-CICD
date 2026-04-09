@@ -1,0 +1,11 @@
+const express = require('express')
+const app = express()
+
+// Simple route '/'
+app.get('/', (req,res) => {
+  res.send('Hello from Daksh!)
+})
+
+app.listen(3000, () => {
+  console.log('Server running on port 3000')
+})
