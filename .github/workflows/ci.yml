@@ -23,3 +23,13 @@ jobs:
 
     - name: Building the Image
       run: docker build -t myapp:latest .
+
+    - name: Image Scanning 
+      uses: aquasecurity/trivy-action@v0.35.0
+      with:
+        image-ref: myapp:latest
+        format: 'table'
+        exit-code: '1'
+        ignore_unfixed: true    # Show me fix as well for vulnurabilities
+        severity: 'CRITICAL'
+        
