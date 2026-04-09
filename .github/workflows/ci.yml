@@ -34,5 +34,5 @@ jobs:
         ignore-unfixed: true       # Only show vulnerabilities with an available fix
         severity: 'CRITICAL'
 
-    # - name: Push Image
-    #   run: echo "Push to DockerHub/ECR"
+    - name: Push Image
+      run: echo "Push to DockerHub/ECR"
