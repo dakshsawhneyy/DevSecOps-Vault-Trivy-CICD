@@ -33,3 +33,5 @@ jobs:
         ignore_unfixed: true    # Show me fix as well for vulnurabilities
         severity: 'CRITICAL'
         
+    - name: Pushing the image
+      run: echo "Pushing Image to ECR/DockerHub"
