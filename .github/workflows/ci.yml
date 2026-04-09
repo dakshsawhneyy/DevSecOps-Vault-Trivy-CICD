@@ -1,1 +1,25 @@
+name: DevSecOps Pipeline
 
+on: [push, workflow_dispatch]
+
+jobs:
+  testing_and_building:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Install Vault CLI
+      run: |
+        sudo apt update
+        sudo snap install vault
+
+    - name: Get the Secret
+      run: |
+        export VAULT_ADDR=${{ secrets.VAULT_ADDR }}
+        export VAULT_TOKEN=${{ secrets.VAULT_TOKEN }}
+        vault kv get -field=DOCKERPASSWORD secret/app > secret.txt
+
+    - name: Building the Image
+      run: docker build -t myapp:latest .
